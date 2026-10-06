@@ -1,0 +1,1213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Radhe Cafe</title>
+
+    <style>
+
+        /* =========================
+           BASIC SETTINGS
+        ========================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #fffaf5;
+            color: #333;
+            line-height: 1.6;
+        }
+
+
+        /* =========================
+           NAVIGATION BAR
+        ========================== */
+
+        header {
+            background-color: #4b2e24;
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #ffd28c;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #ffd28c;
+        }
+
+
+        /* =========================
+           HOME SECTION
+        ========================== */
+
+        .home {
+            min-height: 90vh;
+            background:
+                linear-gradient(
+                    rgba(0,0,0,0.55),
+                    rgba(0,0,0,0.55)
+                ),
+                url("https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=1600&q=80");
+
+            background-size: cover;
+            background-position: center;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+
+            padding: 40px 20px;
+            color: white;
+        }
+
+        .home-content {
+            max-width: 750px;
+        }
+
+        .home h1 {
+            font-size: 65px;
+            margin-bottom: 10px;
+            color: #ffd28c;
+        }
+
+        .home h2 {
+            font-size: 30px;
+            margin-bottom: 20px;
+        }
+
+        .home p {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 13px 28px;
+            background-color: #d2691e;
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            margin: 5px;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #9d4715;
+            transform: translateY(-3px);
+        }
+
+
+        /* =========================
+           COMMON SECTION STYLE
+        ========================== */
+
+        section {
+            padding: 80px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .section-title h2 {
+            font-size: 38px;
+            color: #4b2e24;
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: #777;
+        }
+
+
+        /* =========================
+           ABOUT SECTION
+        ========================== */
+
+        .about-content {
+            display: flex;
+            gap: 50px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-text h3 {
+            font-size: 30px;
+            color: #4b2e24;
+            margin-bottom: 15px;
+        }
+
+        .about-text p {
+            margin-bottom: 15px;
+            color: #555;
+        }
+
+
+        /* =========================
+           MENU SECTION
+        ========================== */
+
+        #menu {
+            background-color: #f7eee7;
+        }
+
+        .menu-container {
+            display: grid;
+            grid-template-columns:
+                repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .menu-card {
+            background-color: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.12);
+            transition: 0.3s;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .menu-card img {
+            width: 100%;
+            height: 210px;
+            object-fit: cover;
+        }
+
+        .menu-info {
+            padding: 20px;
+        }
+
+        .menu-info h3 {
+            color: #4b2e24;
+            margin-bottom: 8px;
+        }
+
+        .menu-info p {
+            color: #777;
+            font-size: 14px;
+        }
+
+        .price {
+            display: block;
+            color: #d2691e;
+            font-size: 22px;
+            font-weight: bold;
+            margin-top: 12px;
+        }
+
+
+        /* =========================
+           SERVICES
+        ========================== */
+
+        .services {
+            display: grid;
+            grid-template-columns:
+                repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+            text-align: center;
+        }
+
+        .service-box {
+            padding: 35px 20px;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .service-box .icon {
+            font-size: 45px;
+            margin-bottom: 15px;
+        }
+
+        .service-box h3 {
+            color: #4b2e24;
+            margin-bottom: 10px;
+        }
+
+
+        /* =========================
+           SPECIAL OFFER
+        ========================== */
+
+        .offer {
+            background-color: #4b2e24;
+            color: white;
+            text-align: center;
+        }
+
+        .offer h2 {
+            font-size: 40px;
+            margin-bottom: 15px;
+            color: #ffd28c;
+        }
+
+        .offer p {
+            font-size: 18px;
+            margin-bottom: 25px;
+        }
+
+
+        /* =========================
+           GALLERY
+        ========================== */
+
+        .gallery {
+            display: grid;
+            grid-template-columns:
+                repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 12px;
+            transition: 0.3s;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.03);
+        }
+
+
+        /* =========================
+           OPENING HOURS
+        ========================== */
+
+        .hours-section {
+            background-color: #f7eee7;
+        }
+
+        .hours-box {
+            max-width: 650px;
+            margin: auto;
+            background-color: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .hour-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .hour-row:last-child {
+            border-bottom: none;
+        }
+
+
+        /* =========================
+           CONTACT SECTION
+        ========================== */
+
+        .contact-container {
+            display: grid;
+            grid-template-columns:
+                repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .contact-info {
+            background-color: #4b2e24;
+            color: white;
+            padding: 35px;
+            border-radius: 15px;
+        }
+
+        .contact-info h3 {
+            color: #ffd28c;
+            margin-bottom: 20px;
+            font-size: 28px;
+        }
+
+        .contact-info p {
+            margin-bottom: 15px;
+        }
+
+        .contact-form {
+            background-color: white;
+            padding: 35px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 13px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 7px;
+            font-size: 15px;
+        }
+
+        .contact-form textarea {
+            min-height: 130px;
+            resize: vertical;
+        }
+
+        .contact-form button {
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================== */
+
+        footer {
+            background-color: #291914;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        footer h2 {
+            color: #ffd28c;
+            margin-bottom: 10px;
+        }
+
+        .social-links {
+            margin: 15px 0;
+        }
+
+        .social-links a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .social-links a:hover {
+            color: #ffd28c;
+        }
+
+
+        /* =========================
+           RESPONSIVE DESIGN
+        ========================== */
+
+        @media(max-width: 768px) {
+
+            nav {
+                flex-direction: column;
+            }
+
+            nav ul {
+                margin-top: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 12px;
+            }
+
+            .home h1 {
+                font-size: 45px;
+            }
+
+            .home h2 {
+                font-size: 24px;
+            }
+
+            .section-title h2 {
+                font-size: 30px;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     NAVIGATION
+========================== -->
+
+<header>
+
+    <nav>
+
+        <div class="logo">
+            ☕ Radhe Cafe
+        </div>
+
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+
+    </nav>
+
+</header>
+
+
+<!-- =========================
+     HOME
+========================== -->
+
+<section class="home" id="home">
+
+    <div class="home-content">
+
+        <h1>Radhe Cafe</h1>
+
+        <h2>Good Coffee, Good Food, Good Mood</h2>
+
+        <p>
+            Welcome to Radhe Cafe, where every cup is made
+            with love and every meal brings happiness.
+            Relax, refresh and enjoy delicious food with us.
+        </p>
+
+        <a href="#menu" class="btn">
+            View Menu
+        </a>
+
+        <a href="#contact" class="btn">
+            Contact Us
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     ABOUT
+========================== -->
+
+<section id="about">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <h2>About Radhe Cafe</h2>
+
+            <p>
+                A perfect place for coffee, food and beautiful memories.
+            </p>
+
+        </div>
+
+
+        <div class="about-content">
+
+            <div class="about-image">
+
+                <img
+                src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1000&q=80"
+                alt="Radhe Cafe">
+
+            </div>
+
+
+            <div class="about-text">
+
+                <h3>Welcome to Radhe Cafe</h3>
+
+                <p>
+                    Radhe Cafe is a warm and comfortable cafe created
+                    for people who love delicious food, refreshing
+                    beverages and a peaceful atmosphere.
+                </p>
+
+                <p>
+                    We serve freshly prepared coffee, tea, sandwiches,
+                    pizza, burgers, pasta, desserts and many other
+                    tasty items.
+                </p>
+
+                <p>
+                    Whether you want to spend time with friends,
+                    celebrate a special moment, work on your laptop
+                    or simply enjoy a cup of coffee, Radhe Cafe is
+                    the perfect place for you.
+                </p>
+
+                <a href="#menu" class="btn">
+                    Explore Our Menu
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     MENU
+========================== -->
+
+<section id="menu">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <h2>Our Menu</h2>
+
+            <p>
+                Freshly prepared food and beverages just for you.
+            </p>
+
+        </div>
+
+
+        <div class="menu-container">
+
+
+            <!-- Coffee -->
+
+            <div class="menu-card">
+
+                <img
+                src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=800&q=80"
+                alt="Coffee">
+
+                <div class="menu-info">
+
+                    <h3>Hot Coffee</h3>
+
+                    <p>
+                        Freshly brewed aromatic coffee served hot.
+                    </p>
+
+                    <span class="price">
+                        ₹80
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- Cold Coffee -->
+
+            <div class="menu-card">
+
+                <img
+                src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=800&q=80"
+                alt="Cold Coffee">
+
+                <div class="menu-info">
+
+                    <h3>Cold Coffee</h3>
+
+                    <p>
+                        Creamy and refreshing chilled coffee.
+                    </p>
+
+                    <span class="price">
+                        ₹120
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- Pizza -->
+
+            <div class="menu-card">
+
+                <img
+                src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=800&q=80"
+                alt="Pizza">
+
+                <div class="menu-info">
+
+                    <h3>Cheese Pizza</h3>
+
+                    <p>
+                        Delicious pizza loaded with cheese and toppings.
+                    </p>
+
+                    <span class="price">
+                        ₹180
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- Burger -->
+
+            <div class="menu-card">
+
+                <img
+                src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=800&q=80"
+                alt="Burger">
+
+                <div class="menu-info">
+
+                    <h3>Veg Burger</h3>
+
+                    <p>
+                        Crispy vegetable burger with cheese and sauces.
+                    </p>
+
+                    <span class="price">
+                        ₹110
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- Sandwich -->
+
+            <div class="menu-card">
+
+                <img
+                src="https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=800&q=80"
+                alt="Sandwich">
+
+                <div class="menu-info">
+
+                    <h3>Grilled Sandwich</h3>
+
+                    <p>
+                        Crispy grilled sandwich filled with vegetables.
+                    </p>
+
+                    <span class="price">
+                        ₹100
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- Pasta -->
+
+            <div class="menu-card">
+
+                <img
+                src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&fit=crop&w=800&q=80"
+                alt="Pasta">
+
+                <div class="menu-info">
+
+                    <h3>White Sauce Pasta</h3>
+
+                    <p>
+                        Creamy pasta prepared with delicious white sauce.
+                    </p>
+
+                    <span class="price">
+                        ₹160
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- French Fries -->
+
+            <div class="menu-card">
+
+                <img
+                src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=800&q=80"
+                alt="French Fries">
+
+                <div class="menu-info">
+
+                    <h3>French Fries</h3>
+
+                    <p>
+                        Crispy golden fries served with tomato ketchup.
+                    </p>
+
+                    <span class="price">
+                        ₹90
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- Dessert -->
+
+            <div class="menu-card">
+
+                <img
+                src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=800&q=80"
+                alt="Chocolate Cake">
+
+                <div class="menu-info">
+
+                    <h3>Chocolate Cake</h3>
+
+                    <p>
+                        Soft and delicious chocolate cake.
+                    </p>
+
+                    <span class="price">
+                        ₹130
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     SERVICES
+========================== -->
+
+<section id="services">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <h2>Our Services</h2>
+
+            <p>
+                We provide the best cafe experience for our customers.
+            </p>
+
+        </div>
+
+
+        <div class="services">
+
+
+            <div class="service-box">
+
+                <div class="icon">☕</div>
+
+                <h3>Fresh Coffee</h3>
+
+                <p>
+                    Freshly brewed coffee prepared with premium
+                    quality coffee beans.
+                </p>
+
+            </div>
+
+
+            <div class="service-box">
+
+                <div class="icon">🍕</div>
+
+                <h3>Delicious Food</h3>
+
+                <p>
+                    Enjoy freshly prepared snacks, meals and desserts.
+                </p>
+
+            </div>
+
+
+            <div class="service-box">
+
+                <div class="icon">📶</div>
+
+                <h3>Free Wi-Fi</h3>
+
+                <p>
+                    Stay connected while enjoying your coffee and food.
+                </p>
+
+            </div>
+
+
+            <div class="service-box">
+
+                <div class="icon">🎉</div>
+
+                <h3>Small Celebrations</h3>
+
+                <p>
+                    Celebrate birthdays and special moments
+                    with your friends.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     SPECIAL OFFER
+========================== -->
+
+<section class="offer">
+
+    <div class="container">
+
+        <h2>Special Offer</h2>
+
+        <p>
+            Get 10% OFF on your first order at Radhe Cafe!
+        </p>
+
+        <a href="#contact" class="btn">
+            Order Now
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     GALLERY
+========================== -->
+
+<section id="gallery">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <h2>Our Gallery</h2>
+
+            <p>
+                Take a look at the Radhe Cafe experience.
+            </p>
+
+        </div>
+
+
+        <div class="gallery">
+
+            <img
+            src="https://images.unsplash.com/photo-1559925393-8be0ec4767c8?auto=format&fit=crop&w=700&q=80"
+            alt="Cafe Interior">
+
+            <img
+            src="https://images.unsplash.com/photo-1445116572660-236099ec97a0?auto=format&fit=crop&w=700&q=80"
+            alt="Cafe">
+
+            <img
+            src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=700&q=80"
+            alt="Coffee">
+
+            <img
+            src="https://images.unsplash.com/photo-1511081692775-05d0f180a065?auto=format&fit=crop&w=700&q=80"
+            alt="Cafe Table">
+
+            <img
+            src="https://images.unsplash.com/photo-1498804103079-a6351b050096?auto=format&fit=crop&w=700&q=80"
+            alt="Coffee Cup">
+
+            <img
+            src="https://images.unsplash.com/photo-1556740749-887f6717d7e4?auto=format&fit=crop&w=700&q=80"
+            alt="Cafe Customer">
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     OPENING HOURS
+========================== -->
+
+<section class="hours-section">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <h2>Opening Hours</h2>
+
+            <p>
+                Visit Radhe Cafe and enjoy your favourite food.
+            </p>
+
+        </div>
+
+
+        <div class="hours-box">
+
+            <div class="hour-row">
+                <strong>Monday</strong>
+                <span>9:00 AM - 10:00 PM</span>
+            </div>
+
+            <div class="hour-row">
+                <strong>Tuesday</strong>
+                <span>9:00 AM - 10:00 PM</span>
+            </div>
+
+            <div class="hour-row">
+                <strong>Wednesday</strong>
+                <span>9:00 AM - 10:00 PM</span>
+            </div>
+
+            <div class="hour-row">
+                <strong>Thursday</strong>
+                <span>9:00 AM - 10:00 PM</span>
+            </div>
+
+            <div class="hour-row">
+                <strong>Friday</strong>
+                <span>9:00 AM - 11:00 PM</span>
+            </div>
+
+            <div class="hour-row">
+                <strong>Saturday</strong>
+                <span>9:00 AM - 11:00 PM</span>
+            </div>
+
+            <div class="hour-row">
+                <strong>Sunday</strong>
+                <span>10:00 AM - 11:00 PM</span>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CONTACT
+========================== -->
+
+<section id="contact">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <h2>Contact Us</h2>
+
+            <p>
+                We'd love to hear from you.
+            </p>
+
+        </div>
+
+
+        <div class="contact-container">
+
+
+            <div class="contact-info">
+
+                <h3>Radhe Cafe</h3>
+
+                <p>
+                    📍 Address:
+                    Main Road, Jalgaon, Maharashtra
+                </p>
+
+                <p>
+                    📞 Phone:
+                    +91 98765 43210
+                </p>
+
+                <p>
+                    ✉ Email:
+                    radhecafe@gmail.com
+                </p>
+
+                <p>
+                    ☕ Fresh Coffee | Delicious Food |
+                    Beautiful Memories
+                </p>
+
+            </div>
+
+
+            <form
+            class="contact-form"
+            onsubmit="sendMessage(event)">
+
+                <input
+                type="text"
+                id="name"
+                placeholder="Enter your name"
+                required>
+
+                <input
+                type="email"
+                id="email"
+                placeholder="Enter your email"
+                required>
+
+                <input
+                type="tel"
+                id="phone"
+                placeholder="Enter your phone number">
+
+                <textarea
+                id="message"
+                placeholder="Write your message"
+                required></textarea>
+
+                <button
+                type="submit"
+                class="btn">
+
+                    Send Message
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FOOTER
+========================== -->
+
+<footer>
+
+    <h2>☕ Radhe Cafe</h2>
+
+    <p>
+        Good Coffee • Good Food • Good Mood
+    </p>
+
+    <div class="social-links">
+
+        <a href="#">Instagram</a>
+
+        <a href="#">Facebook</a>
+
+        <a href="#">WhatsApp</a>
+
+    </div>
+
+    <p>
+        © 2026 Radhe Cafe. All Rights Reserved.
+    </p>
+
+</footer>
+
+
+<!-- =========================
+     JAVASCRIPT
+========================== -->
+
+<script>
+
+    function sendMessage(event) {
+
+        event.preventDefault();
+
+        let name =
+            document.getElementById("name").value;
+
+        alert(
+            "Thank you " + name +
+            "! Your message has been sent to Radhe Cafe."
+        );
+
+        document.querySelector(".contact-form").reset();
+
+    }
+
+</script>
+
+
+</body>
+</html>
